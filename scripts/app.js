@@ -70,7 +70,7 @@ function lerDados() {
                 cardAgen.innerHTML += `
                 <thead id="dados">
                 </table>
-                <tr>
+                <tr class="text-dark">
                 <th >${colecao.Nome }</th>
                 <th>${colecao.Procedimento}</th>
                 <th>${colecao.Hora}</th>
