@@ -12,7 +12,31 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 let db = firebase.firestore();
+let auth = firebase.auth();
 
+//autenticação usuário
+
+function login() {
+    let userEmail = document.getElementById("userEmail").value;
+    let userSenha = document.getElementById("userSenha").value;
+    event.preventDefault();
+
+    auth.signInWithEmailAndPassword(userEmail, userSenha)
+        .then((loggerUser) => {
+            window.location.replace('lista.html');
+            console.log(loggerUser);
+
+        }).catch(error => {
+            let ErrLoggin = document.getElementById("ErrLoggin");
+            ErrLoggin.innerHTML = `<h6 class="mt-2 text-danger">Usuário ou senha Inválido</h6>`
+
+        })
+    let user = auth.currentUser;
+
+
+
+
+}
 
 
 function tarefa() {
@@ -40,7 +64,7 @@ function tarefa() {
             });
         alert('cadastrado com sucesso!');
         setTimeout(() => {
-            window.location.replace('index.html');
+
         }, 2000);
 
     }
@@ -59,28 +83,32 @@ function tarefa() {
 
 
 }
-let cardAgen = document.getElementById(" list-tsss ");
+
 
 function lerDados() {
 
     db.collection("Fisioterapia").onSnapshot((snapshot) => {
         snapshot.forEach((doc) => {
+            let cardAgends = "";
             let colecao = doc.data();
             this.setTimeout(() => {
-                cardAgen.innerHTML += `
+                cardAgend = `
                 <thead id="dados">
                 </table>
                 <tr class="text-dark">
                 <th >${colecao.Nome }</th>
                 <th>${colecao.Procedimento}</th>
                 <th>${colecao.Hora}</th>
-                <th>${colecao.Preço}<th>
+                <th>${colecao.Preço}  R$<th>
                 <div><img src="./imagens/bucket-fill.svg" onclick="deleteTask('${doc.id}')"></div>
                
               </tr>
             </thead>
           </table> `
+                cardAgends = cardAgend;
+                document.getElementById(" list-tsss ").innerHTML += cardAgends;
             }, 1000);
+
 
 
         });
