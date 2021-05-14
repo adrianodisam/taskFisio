@@ -106,12 +106,13 @@ function lerDados() {
                 <tbody>
                     <tr>
                         <th scope="row">
-                         <div><img src="./imagens/bucket-fill.svg" onclick="deleteTask('${doc.id}')"></div>
+                         
                         </th>
                         <td>${colecao.Nome}</td>
                         <td>${colecao.Procedimento}</td>
                         <td>${colecao.Hora}</td>
                         <td>${colecao.Preço} R$</td>
+                        <td><div><img src="./imagens/bucket-fill.svg" onclick="deleteTask('${doc.id}')"></div> </td>
                     </tr>
                 </tbody>
             </table> `
