@@ -99,14 +99,14 @@ function lerDados() {
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Procedimento</th>
-                        <th scope="col">Preço</th>
                         <th scope="col">Hora e Data</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">#</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">
-                         
                         </th>
                         <td>${colecao.Nome}</td>
                         <td>${colecao.Procedimento}</td>
