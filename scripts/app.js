@@ -89,24 +89,33 @@ function lerDados() {
 
     db.collection("Fisioterapia").onSnapshot((snapshot) => {
         snapshot.forEach((doc) => {
-            let cardAgends = "";
+
             let colecao = doc.data();
             this.setTimeout(() => {
-                cardAgend = `
-                <thead id="dados">
-                </table>
-                <tr class="text-dark">
-                <th >${colecao.Nome }</th>
-                <th>${colecao.Procedimento}</th>
-                <th>${colecao.Hora}</th>
-                <th>${colecao.Preço}  R$<th>
-                <div><img src="./imagens/bucket-fill.svg" onclick="deleteTask('${doc.id}')"></div>
-               
-              </tr>
-            </thead>
-          </table> `
-                cardAgends = cardAgend;
-                document.getElementById(" list-tsss ").innerHTML += cardAgends;
+                document.getElementById("tss").innerHTML += `
+                <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Procedimento</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Hora e Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                         <div><img src="./imagens/bucket-fill.svg" onclick="deleteTask('${doc.id}')"></div>
+                        </th>
+                        <td>${colecao.Nome}</td>
+                        <td>${colecao.Procedimento}</td>
+                        <td>${colecao.Hora}</td>
+                        <td>${colecao.Preço} R$</td>
+                    </tr>
+                </tbody>
+            </table> `
+
             }, 1000);
 
 
